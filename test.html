@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="css/table.css" />
+<script type="text/javascript" src="js/Jquery.min.js"></script>
+<script type="text/javascript" src="js/tableop.js"></script>
+<title>10JQKA</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+	数据渲染
+	<table class="imagetable" id="tab">
+	</table>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+						url : "data/test.json",
+						type : "GET",
+						dataType : "json",
+						success : function(data) {
+							var msg = "";
+							msg += "<tr>" + "<th>" + "ID" + "</th>" + "<th>"
+									+ "Datasource Name" + "</th>" + "<th>"
+									+ "Product Name" + "</th>" + "<th>"
+									+ "Email" + "</th>" + "<th>" + "Action"
+									+ "</th>" + "</tr>";
+							for (var i = 0; i < data.test.length; i++) {//循环json对象，拼接tr,td的html
+								msg += "<tr>";
+								msg += "<td>" + data.test[i].id + "</td>";
+								msg += "<td>" + data.test[i].dsn + "</td>";
+								msg += "<td>" + data.test[i].pn + "</td>";
+								msg += "<td>" + data.test[i].email + "</td>";
+								msg += "<td>"
+										+ "<img id=\"imgstyle\" src=\"img/delete.png\" style=\"width:20px;heigth:20px\" onClick=\"delRow(this)\">"
+										+ "</td>";
+								msg += "</tr>";
+							}
+							$("#tab").html(msg);
+							//通过jquery方式获取table，并把tr,td的html输出到table中
+						},
+						error : function() {
+							alert("数据加载错误!");
+						}
+					});
+		});
+	</script>
+</body>
+</html>

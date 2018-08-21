@@ -1,0 +1,7 @@
+{
+	"test":[
+        {"id":"1","dsn":"alibaba","pn":"payfor","email":"yang@qq.com"},
+        {"id":"2","dsn":"tengxun","pn":"QQ","email":"longdaye@qq.com"},
+        {"id":"3","dsn":"google","pn":"sq","email":"l23@qq.com"}
+	]
+}
